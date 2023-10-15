@@ -12,21 +12,21 @@ class Solution(object):
         :rtype: ListNode
         """
 
-    resultlist = ListNode(0)
-    current = resultlist
-    carry = 0
+        resultlist = ListNode(0)
+        current = resultlist
+        carry = 0
 
-    while l1 or l2 or carry:
-        val1 = l1.val if l1 is not None else 0
-        val2 = l2.val if l2 is not None else 0
-        result = val1 + val2 + carry
-        carry = result // 10
-        current.next = ListNode(result % 10)
-        current = current.next
+        while l1 or l2 or carry:
+            val1 = l1.val if l1 is not None else 0
+            val2 = l2.val if l2 is not None else 0
+            result = val1 + val2 + carry
+            carry = result // 10
+            current.next = ListNode(result % 10)
+            current = current.next
 
-        if l1:
-            l1 = l1.next
-        if l2:
-            l2 = l2.next
+            if l1:
+                l1 = l1.next
+            if l2:
+                l2 = l2.next
 
-    return resultlist.next
+        return resultlist.next
