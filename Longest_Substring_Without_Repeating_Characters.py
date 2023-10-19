@@ -4,17 +4,14 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        lastsubstring = substring = ""
-        index = 0
-
-        while index < len(s):
-            for value in range(index, len(s)):
-                if s[value] not in substring:
-                    substring += s[value]
-                else:
-                    index += 1
-                    if len(substring) > len(lastsubstring):
-                        lastsubstring = substring
-                        substring = ""
-                        break
-        return len(lastsubstring)
+        char_index = []
+        max_length = 0
+        for char in s:
+            if char not in char_index:
+                char_index.append(char)
+                max_length = max(max_length, len(char_index))
+            else:
+                index = char_index.index(char)
+                char_index[0:index + 1] = []
+                char_index.append(char)
+        return max_length
